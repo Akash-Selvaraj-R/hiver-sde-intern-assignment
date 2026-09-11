@@ -1,5 +1,24 @@
 # Uber Customer Support Agent
 
+## Live Demo
+
+> **API is live on Render (free tier):** [https://hiver-support-agent.onrender.com](https://hiver-support-agent.onrender.com)
+>
+> - Interactive docs: [https://hiver-support-agent.onrender.com/docs](https://hiver-support-agent.onrender.com/docs)
+> - Health check: [https://hiver-support-agent.onrender.com/health](https://hiver-support-agent.onrender.com/health)
+> - First request after idle takes ~30-60s (cold start). Subsequent requests: ~2-3s.
+> - **Note:** Uses template-based replies (no OpenAI API key). Responses are grounded in historical Uber brand responses.
+
+### Quick test
+
+```bash
+curl -X POST https://hiver-support-agent.onrender.com/predict \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Where is my driver? I have been waiting for 20 minutes."}'
+```
+
+---
+
 ## 1. Results
 
 ### Human-Grounded Evaluation (Verified)
@@ -457,10 +476,16 @@ python evaluation/run_real_eval.py
 # Run CLI demo
 python -m src --message "Where is my driver?"
 
-# Start API server
+# Start API server locally
 python -m uvicorn api.main:app --reload
 # Visit http://localhost:8000/docs
+
+# Run 3-scenario structured demo (local or live API)
+python demo.py --local    # Direct pipeline, no server
+python demo.py --live     # Requires server running on localhost:8000
 ```
+
+**Live API:** [https://hiver-support-agent.onrender.com/docs](https://hiver-support-agent.onrender.com/docs)
 
 **Note:** The sentence-transformer model (all-MiniLM-L6-v2, ~80MB) is downloaded on first run.
 
