@@ -1,0 +1,260 @@
+intents:
+- name: ride_status
+  description: >
+    Questions and complaints about ride/trip status, driver location, wait
+    times, pickup/dropoff, and ride completion. This includes messages about
+    driver cancellations, no-shows, wrong routes, and ride-tracking issues.
+  definition: >
+    Any message about the current or past ride status: where is my driver,
+    how long until pickup, driver cancelled, ride ended prematurely, wrong
+    destination, ride not showing in app, ETA questions.
+  inclusion_criteria:
+    - Mentions driver, ride, trip, pickup, dropoff, ETA, waiting, cancelled ride
+    - Asks about ride status or driver location
+    - Complains about ride duration, route, or completion
+  exclusion_criteria:
+    - Pure fare/charge complaints without ride-status angle
+    - App crashes or technical bugs
+    - Account access problems
+  confusing_related_intents:
+    - trip_fare_dispute
+    - app_functionality
+  escalation_considerations: >
+    Safety concerns (driver behavior, unsafe situations), repeated driver
+    cancellations, lost items in vehicles, and rides with no brand response
+    should be escalated.
+  positive_examples:
+  - '@Uber_Support Hi this is Mirza used uber service from tappachabutra to Spencer''s
+    in Hyderabad with vehicle no AP 05TV4681 and forgot my Samsung Note 5 phone in
+    Tata indica and the driver is not responding. Plz help me in getting my phone
+    as the data is important'
+  - '@Uber_Support disappointed with uber.driver stopped the ride in mid way and tell
+    me he will not go to my destination.he misbehaved when i asked to tell me before
+    picking me up.'
+  - "@115873 driver after driver canceling on people in the lot at @22819 tonight.\
+    \ I realize local traffic is a mess but if you\u2019re going to designate pick-up\
+    \ areas, what gives?!"
+  count: 20620
+  percentage: 49.2
+
+- name: other
+  description: >
+    Messages that don't fit any other intent category. Includes general
+    inquiries, positive feedback, promotional content, spam, off-topic
+    messages, and ambiguous requests.
+  definition: >
+    Any message that cannot be clearly assigned to one of the above intents.
+    This includes: general questions not about a specific ride/charge/account,
+    positive feedback or thanks, promotional inquiries, spam, off-topic
+    messages, and messages too ambiguous to classify.
+  inclusion_criteria:
+    - Does not match any other intent
+    - Is a general inquiry about Uber services
+    - Is positive feedback or thanks
+    - Is promotional or spam
+  exclusion_criteria:
+    - Can be clearly assigned to another intent
+  confusing_related_intents: []
+  escalation_considerations: >
+    Ambiguous messages should be reviewed to determine if a new intent
+    category is needed or if human handling is appropriate.
+  positive_examples:
+  - '@115873 why does your new UX suck? How come I can not see what the car looks
+    like anymore?!'
+  - "@115873 @Uber_Support  u seriusly need to work on your Uber pool boking. We dnt\
+    \ use pool to do city darshan"
+  - 'Can i expect revert @Uber_Support ???'
+  count: 10068
+  percentage: 24.0
+
+- name: account_access
+  description: >
+    Account-related issues: login problems, account deactivation/banning,
+    verification failures, phone number changes, password resets, and
+    general account management.
+  definition: >
+    Any message about being unable to access an account, account banned or
+    deactivated, OTP/verification issues, phone number or email changes,
+    document submission for driver accounts, or account security concerns.
+  inclusion_criteria:
+    - Mentions account, login, banned, deactivated, verification, OTP, password
+    - Reports inability to access the app or account
+    - Requests account changes (email, phone, documents)
+  exclusion_criteria:
+    - Ride-specific issues that happen to mention account
+    - Payment method management without access issues
+  confusing_related_intents:
+    - app_functionality
+  escalation_considerations: >
+    Account security concerns, deactivation appeals, and identity verification
+    failures should be escalated to specialized teams.
+  positive_examples:
+  - "@Uber_Support I been trying to access my account but Uber keeps telling me to\
+    \ update my number... it\u2019s been the same number since 2013 please fix this\
+    \ issue"
+  - '@Uber_Support, I''m facing issue in login, not getting OTP on my cell phone.
+    PLease help at earliest.'
+  - "@115873 Can your support team sort out the issues about my account.2 months and\
+    \ counting going through this back and forth"
+  count: 4107
+  percentage: 9.8
+
+- name: app_functionality
+  description: >
+    Technical issues with the Uber or Uber EATS app: crashes, bugs, GPS
+    problems, map errors, feature malfunctions, update issues, and
+    platform-specific bugs.
+  definition: >
+    Any message about the app not working correctly: crashes, won't load,
+    GPS wrong, map pins incorrect, features missing, update problems,
+    notification failures, or cross-platform issues.
+  inclusion_criteria:
+    - Mentions app, crash, bug, GPS, map, loading, broken, error, glitch
+    - Reports specific app feature not working
+    - Mentions update or download issues
+  exclusion_criteria:
+    - Ride issues caused by app but primarily about the ride experience
+    - Account login problems
+  confusing_related_intents:
+    - account_access
+    - ride_status
+  escalation_considerations: >
+    Widespread app outages, security vulnerabilities, and issues affecting
+    driver earnings should be escalated to engineering teams.
+  positive_examples:
+  - "@Uber_Support The app does not show a picture of my car for passengers to see!\
+    \ Please fix!"
+  - "@Uber_Support @115877\nTried to order some food and the app crashed and won\u2019\
+    t load any menus now"
+  - '@Uber_Support your apps are absolutely uslesss'
+  count: 3023
+  percentage: 7.2
+
+- name: trip_fare_dispute
+  description: >
+    Disputes about charges, surge pricing, fare amounts, double charges,
+    billing errors, and receipt issues. Messages where the customer believes
+    they were charged incorrectly for a ride or trip.
+  definition: >
+    Any message about being charged too much, surge pricing complaints,
+    duplicate charges, incorrect fare, fare not matching estimate, receipt
+    issues, or payment method problems tied to a specific ride.
+  inclusion_criteria:
+    - Mentions charge, fare, surge, price, cost, double, receipt, payment
+    - Complains about amount charged vs expected
+    - Reports unauthorized or duplicate charges
+  exclusion_criteria:
+    - General payment method issues (card declined, can't add card) without ride context
+    - Refund requests (separate intent)
+    - App billing display bugs
+  confusing_related_intents:
+    - ride_status
+    - refund_request
+  escalation_considerations: >
+    High-value fare disputes, repeated billing errors, suspected fraud,
+    and charges without ride records should be escalated.
+  positive_examples:
+  - "@115873 I\u2019m embarrassed that I gave you another chance and you failed again.\
+    \ Charged for X not Pool. Customer service didn\u2019t help #neveruber #lyft"
+  - '@Uber_Support none of your phone numbers work. Who do I call for a Compalint
+    of a charge of three times???'
+  - '@Uber_Support I''m very upset and disappointed in your service. To charge me
+    when services were not rendered is shameful'
+  count: 2504
+  percentage: 6.0
+
+- name: complaint
+  description: >
+    Expressions of dissatisfaction with Uber service quality: driver behavior,
+    poor experiences, negative feedback, service complaints, and general
+    frustration. Not requesting a specific action but expressing displeasure.
+  definition: >
+    Any message primarily expressing dissatisfaction: rude drivers, bad
+    experiences, frustration with service, disappointment, threatening to
+    switch to competitors, or general negative sentiment without a specific
+    actionable request.
+  inclusion_criteria:
+    - Contains negative sentiment words (terrible, worst, frustrated, angry, disappointed)
+    - Criticizes service quality or driver behavior
+    - Does not have a specific actionable request (or action is secondary)
+  exclusion_criteria:
+    - Complaints that are primarily about fare/charge issues
+    - Complaints that are primarily requesting a refund
+    - Safety emergencies (escalate immediately)
+  confusing_related_intents:
+    - ride_status
+    - trip_fare_dispute
+  escalation_considerations: >
+    Severe customer anger, safety-related complaints, threats of legal action,
+    and public reputation risk should be escalated for de-escalation.
+  positive_examples:
+  - "@115877 whoaaaa terrible in #sandiego can\u2019t believe how terrible the service\
+    \ is. Better refund that sushi..."
+  - "@115877 had a terrible experience with you. Food was unacceptable and freezing\
+    \ cold. your customer service team can\u2019t do anything about it? Seems unlikely"
+  - '@115873 ordered an uber to take my tv home,a zafira turned up,waved his hand,shook
+    his head & drove off...terrible service!!!'
+  count: 1172
+  percentage: 2.8
+
+- name: refund_request
+  description: >
+    Explicit requests for refunds, money back, or charge reversals. Distinct
+    from fare disputes in that the customer is directly asking for money
+    returned rather than questioning a charge.
+  definition: >
+    Any message explicitly requesting a refund, money back, credit, or
+    charge reversal. May reference a specific ride or charge but the primary
+    intent is getting money returned.
+  inclusion_criteria:
+    - Explicitly says "refund", "money back", "give me back", "return"
+    - May reference specific amount or ride
+    - Asks for credit or compensation
+  exclusion_criteria:
+    - Fare dispute without explicit refund request
+    - Cancellation of account (not ride refund)
+  confusing_related_intents:
+    - trip_fare_dispute
+  escalation_considerations: >
+    Refunds over threshold amounts, repeat refund requests, and refund
+    denials should be escalated to supervisors.
+  positive_examples:
+  - '@115873 give me my damn money back'
+  - "Thanks for the refund, but I\u2019m still missing half a meal that\u2019s sitting\
+    \ in the restaurant. Is it a hassle to just deliver to me? @115877"
+  - '@115877 @148768 Why did I only receive half my order ref - #EAEF5 !? REFUND OR
+    REPLACE NOW!'
+  count: 353
+  percentage: 0.8
+
+- name: cancellation
+  description: >
+    Requests to cancel rides, accounts, subscriptions, or Uber EATS orders.
+    Includes both ride cancellation issues and account/subscription
+    cancellation requests.
+  definition: >
+    Any message about canceling a ride, canceling an account, stopping a
+    subscription, or canceling an Uber EATS order. Also includes complaints
+    about cancellation fees or policies.
+  inclusion_criteria:
+    - Mentions cancel, cancellation, stop, unsubscribe, delete account
+    - Requests to end a subscription or membership
+    - Complains about cancellation fees
+  exclusion_criteria:
+    - Driver canceling on the customer (that's ride_status)
+    - Ride issues that mention cancellation incidentally
+  confusing_related_intents:
+    - ride_status
+    - account_access
+  escalation_considerations: >
+    Cancellation fee disputes, account deletion requests with active
+    subscriptions, and retention-sensitive cases should be escalated.
+  positive_examples:
+  - "Why? Why did UberEATS cancel my order \U0001F629\U0001F62D I had my taste buds\
+    \ set"
+  - '@Uber_Support it''s fucking cold and we have to wait 15 min. I want to cancel
+    my taxi. It doesn''t work. Pls help. There are taxis inf front'
+  - '@Uber_Support Not being able to cancel my @115877 order a second after accidentally
+    ordering is absolutely ridiculous. Support was no help'
+  count: 85
+  percentage: 0.2

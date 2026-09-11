@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data - real dataset (too large to commit)
+data/raw/
+
+# Data - cached embeddings (regenerable)
+data/embeddings_cache/
+
+# Data - processed splits (regenerable, but committed for offline eval)
+# data/processed/
+
+# Data - generated intermediate files
+data/brand_specific/
+data/sample/
+
+# Generated results (regenerable)
+experiments/
+evaluation/results/
+evaluation/golden_set.json
+evaluation/golden_set.csv
+evaluation/baseline_results.json
+
+# Human annotation data (intermediate files must not leak)
+evaluation/human_annotation/annotation_final.csv
+evaluation/human_annotation/annotation_recommendations.csv
+
+# Reply quality annotation (work in progress)
+evaluation/reply_quality_annotation/
+
+# Models (cached downloads)
+models/
+
+# Kaggle
+.kaggle/
+
+# Claude
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+
+# Logs
+*.log
+
+# Temporary / scratch files at root
+temp_*.csv
+temp_*.json
+temp_*.txt
+quick_eval.py
+smoke_test.py
+test_pipeline.py
+build_recommendations.py
+generate_recommendations.py
+run_classification_audit.py

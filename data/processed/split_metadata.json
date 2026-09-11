@@ -1,0 +1,14 @@
+{
+  "brand": "Uber_Support",
+  "data_source": "kaggle_customer_support_on_twitter",
+  "split_method": "temporal_conversation_aware",
+  "split_description": "Conversations sorted chronologically. Golden set = most recent 200 conversations. Train = earliest 70% of remaining. Dev = latest 15% of remaining. No conversation leakage between splits.",
+  "train_size": 35473,
+  "dev_size": 6259,
+  "golden_size": 200,
+  "total": 41932,
+  "taxonomy_size": 8,
+  "golden_set_labels": "auto_generated_NOT_hand_labelled",
+  "random_seed": 42,
+  "timestamp": "2026-09-10T21:34:12.956145"
+}

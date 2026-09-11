@@ -1,0 +1,10 @@
+tweet_id,author_id,inbound,text,created_at,text_length,pseudo_intent
+tweet_8130,brand_account_10,1,Where is my order #86476?,2023-10-09 12:45:00,25,order_status
+tweet_8229,customer_2749,1,Where is my order #35814?,2023-12-07 11:23:00,25,order_status
+tweet_4331,brand_account_12,1,Missing item from order,2023-01-02 17:11:00,23,order_status
+tweet_4107,brand_account_5,1,Where is my order #30543?,2023-07-25 12:19:00,25,order_status
+tweet_6857,brand_account_2,1,Still waiting for refund from item,2023-01-06 00:23:00,34,refund_request
+tweet_6030,brand_account_15,1,Where is my order #15505?,2023-05-20 05:35:00,25,order_status
+tweet_3313,brand_account_5,1,Where is my order #59790?,2023-01-26 13:48:00,25,order_status
+tweet_3443,customer_4735,1,How do I return order?,2023-01-17 03:06:00,22,order_status
+tweet_5557,customer_9982,1,Where is my order #22953?,2023-03-23 00:36:00,25,order_status

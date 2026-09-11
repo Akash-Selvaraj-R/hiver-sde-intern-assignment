@@ -1,0 +1,9 @@
+brand_name: Uber_Support
+confidence_threshold: 0.7
+data_source: kaggle_customer_support_on_twitter
+dataset_path: data/processed
+escalation_threshold: 0.3
+golden_set_status: auto_generated_labels_NOT_hand_labelled
+random_seed: 42
+sample_size: null
+top_k_retrieval: 5
